@@ -9,7 +9,6 @@
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import fs from 'fs';
 import { app, BrowserWindow, ipcMain } from 'electron';
 import { download } from 'electron-dl';
 import { autoUpdater } from 'electron-updater';
@@ -81,11 +80,11 @@ const createWindow = async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1224,
-    minWidth: 1224,
-    height: 710,
-    minHeight: 710,
-    maxHeight: 710,
+    width: 1175,
+    minWidth: 1175,
+    height: 802,
+    minHeight: 802,
+    maxHeight: 802,
     frame: false, // set false in prod
     // transparent: true,
     fullscreen: false,
@@ -182,18 +181,6 @@ app.on('ready', async () => {
   console.log(app.getPath('temp'));
   console.log(app.getPath('exe'));
   console.log(process.env.INI_DOWNLOAD_URL);
-
-  // try to move database from previous version
-  try {
-    const appDataDb = `${path.dirname(app.getPath('appData'))}\\gamelist`;
-    const userDataDb = `${app.getPath('userData')}\\${process.env.DB_NAME}`;
-
-    if (fs.existsSync(appDataDb) && !fs.existsSync(userDataDb)) {
-      fs.copyFileSync(appDataDb, userDataDb);
-    }
-  } catch (e) {
-    console.log(e);
-  }
 });
 
 app.on('activate', () => {

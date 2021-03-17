@@ -261,7 +261,7 @@ export default class GameCard extends Component<Props, State> {
         <Content>
           <div
             style={{
-              height: '370px',
+              height: '250px',
               overflow: 'hidden'
             }}
             className={classNames({

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Layout, message } from 'antd';
+import { Row, Col, Layout, message, Divider } from 'antd';
 import { ipcRenderer, remote } from 'electron';
 import { get } from 'lodash';
 import styles from './Home.css';
@@ -10,7 +10,7 @@ import GameCard, {
   DownloadProgressType,
   GameType
 } from './GameCard';
-import Header from './Header';
+// import Header from './Header';
 import Notificator from '../utils/Notificator';
 
 type Props = {
@@ -58,7 +58,7 @@ export default class Home extends Component<Props, State> {
     this.state = {
       updateIsAvailable: false,
       updateIsDownloaded: false,
-      updateDownloadInProgress: false,
+      updateDownloadInProgress: false
     };
 
     ipcRenderer.on('download complete', (_event, info) => {
@@ -87,47 +87,35 @@ export default class Home extends Component<Props, State> {
       }
     );
 
-    ipcRenderer.on(
-      'update-available',
-      () => {
-        this.setState({
-          updateIsAvailable: true,
-          updateDownloadInProgress: true,
-        })
-      }
-    );
+    ipcRenderer.on('update-available', () => {
+      this.setState({
+        updateIsAvailable: true,
+        updateDownloadInProgress: true
+      });
+    });
 
-    ipcRenderer.on(
-      'update-downloaded',
-      () => {
-        this.setState({
-          updateIsDownloaded: true
-        })
-        Notificator.notify(
-          'Обновление доступно для установки',
-          `${remote.app.name} будет автоматически обновлен при закрытии`
-        );
-      }
-    );
+    ipcRenderer.on('update-downloaded', () => {
+      this.setState({
+        updateIsDownloaded: true
+      });
+      Notificator.notify(
+        'Обновление доступно для установки',
+        `${remote.app.name} будет автоматически обновлен при закрытии`
+      );
+    });
 
-    ipcRenderer.on(
-      'update-error',
-      (err) => {
-        message.warn('Ошибка при загрузке обновления');
-        console.log(err);
-        this.setState({
-          updateIsDownloaded: false,
-          updateDownloadInProgress: false,
-        })
-      }
-    );
+    ipcRenderer.on('update-error', (err: any) => {
+      message.warn('Ошибка при загрузке обновления');
+      console.log(err);
+      this.setState({
+        updateIsDownloaded: false,
+        updateDownloadInProgress: false
+      });
+    });
 
-    ipcRenderer.on(
-      'update-error',
-      (err) => {
-        console.log(err)
-      }
-    );
+    ipcRenderer.on('update-error', (err: any) => {
+      console.log(err);
+    });
   }
 
   componentDidMount() {
@@ -140,7 +128,7 @@ export default class Home extends Component<Props, State> {
       fetchIniFile(process.env.INI_DOWNLOAD_URL);
     }, 3600000);
     this.setState({
-      intervalId,
+      intervalId
     });
   }
 
@@ -155,17 +143,33 @@ export default class Home extends Component<Props, State> {
       downloadTranslationUpdate,
       uninstallTranslation,
       items,
-      availableVersions
+      availableVersions: av
     } = this.props;
-    const { updateIsAvailable, updateDownloadInProgress, updateIsDownloaded } = this.state;
+    // console.log(availableVersions)
+
+    const availableVersions = {
+      ...av,
+      ...{Yakuza1: {
+          reportTranslationIssue: "https://vk.com/topic-186925092_46666645",
+          size: "5275234500",
+          url: "https://www.dropbox.com/sh/qiczgpjru9z1zn1/AABlTvbnKzT95l3Ov83ECxBZa?dl=1",
+          version: "20200801"
+        }}
+    }
+
+    const {
+      updateIsAvailable,
+      updateDownloadInProgress,
+      updateIsDownloaded
+    } = this.state;
     const { Content } = Layout;
 
     const games = [];
-    for (let i = 0; i < items.length; i++) {
+    for (let i = 0; i < items.length; i += 1) {
       const game = items[i];
       const availableVersion = availableVersions[game.name] || null;
       games.push(
-        <Col className="gutter-row" span={8} key={i}>
+        // <Col className="gutter-row" span={6} key={i}>
           <GameCard
             game={game}
             availableVersion={availableVersion}
@@ -173,7 +177,7 @@ export default class Home extends Component<Props, State> {
             onUninstall={uninstallTranslation}
             onDownloadUpdate={downloadTranslationUpdate}
           />
-        </Col>
+        // </Col>
       );
     }
 
@@ -189,8 +193,38 @@ export default class Home extends Component<Props, State> {
         />
         <Content className={styles.content}>
           <Menu />
-          <Header />
-          <Row gutter={24}>{games}</Row>
+          {/*<Header />*/}
+          {/*<Row gutter={24}>{games[0]}</Row>*/}
+
+          <Row gutter={16}>
+            <Col className="gutter-row" span={6}>
+              {games[0]}
+            </Col>
+            <Col className="gutter-row" span={6}>
+              {games[1]}
+            </Col>
+            <Col className="gutter-row" span={6}>
+              {games[2]}
+            </Col>
+            <Col className="gutter-row" span={6}>
+
+            </Col>
+          </Row>
+          <Divider orientation="left" style={{ borderTop: '1px solid #1f1f1f' }} />
+          <Row gutter={16}>
+            <Col className="gutter-row" span={6}>
+              {games[3]}
+            </Col>
+            <Col className="gutter-row" span={6}>
+              {games[4]}
+            </Col>
+            <Col className="gutter-row" span={6}>
+
+            </Col>
+            <Col className="gutter-row" span={6}>
+
+            </Col>
+          </Row>
         </Content>
       </Layout>
     );
