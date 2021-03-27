@@ -74,8 +74,8 @@ export class Game1593245054458 implements MigrationInterface {
     yakuza1.name = 'Yakuza1';
     yakuza1.displayName = 'Yakuza Kiwami';
     yakuza1.image = './assets/image/yakuza-1.png';
-    yakuza1.executablePath = '\\sm1\\Shenmue.exe';
-    yakuza1.directoryHint = 'SMLaunch';
+    yakuza1.executablePath = '\\media\\YakuzaKiwami.exe';
+    yakuza1.directoryHint = 'Yakuza Kiwami';
     await repo.save(yakuza1);
 
     const yakuza2 = new Game();
@@ -83,8 +83,8 @@ export class Game1593245054458 implements MigrationInterface {
     yakuza2.name = 'Yakuza2';
     yakuza2.displayName = 'Yakuza Kiwami 2';
     yakuza2.image = './assets/image/yakuza-2.png';
-    yakuza2.executablePath = '\\sm1\\Shenmue.exe';
-    yakuza2.directoryHint = 'SMLaunch';
+    yakuza2.executablePath = '\\YakuzaKiwami2.exe';
+    yakuza2.directoryHint = 'Yakuza Kiwami 2';
     await repo.save(yakuza2);
 
     const yakuza3 = new Game();
@@ -92,8 +92,8 @@ export class Game1593245054458 implements MigrationInterface {
     yakuza3.name = 'Yakuza3';
     yakuza3.displayName = 'Yakuza 3 Remastered';
     yakuza3.image = './assets/image/yakuza-3.png';
-    yakuza3.executablePath = '\\sm1\\Shenmue.exe';
-    yakuza3.directoryHint = 'SMLaunch';
+    yakuza3.executablePath = '\\Yakuza3.exe';
+    yakuza3.directoryHint = 'Yakuza 3';
     await repo.save(yakuza3);
 
     const yakuza4 = new Game();
@@ -101,8 +101,8 @@ export class Game1593245054458 implements MigrationInterface {
     yakuza4.name = 'Yakuza4';
     yakuza4.displayName = 'Yakuza 4 Remastered';
     yakuza4.image = './assets/image/yakuza-4.png';
-    yakuza4.executablePath = '\\sm1\\Shenmue.exe';
-    yakuza4.directoryHint = 'SMLaunch';
+    yakuza4.executablePath = '\\Yakuza4.exe';
+    yakuza4.directoryHint = 'Yakuza 4';
     await repo.save(yakuza4);
 
     const yakuza5 = new Game();
@@ -110,17 +110,17 @@ export class Game1593245054458 implements MigrationInterface {
     yakuza5.name = 'Yakuza5';
     yakuza5.displayName = 'Yakuza 5 Remastered';
     yakuza5.image = './assets/image/yakuza-5.png';
-    yakuza5.executablePath = '\\sm1\\Shenmue.exe';
-    yakuza5.directoryHint = 'SMLaunch';
+    yakuza5.executablePath = '\\main\\Yakuza5.exe';
+    yakuza5.directoryHint = 'Yakuza 5';
     await repo.save(yakuza5);
 
     const yakuza6 = new Game();
     yakuza6.id = 6;
     yakuza6.name = 'Yakuza6';
-    yakuza6.displayName = 'Yakuza 6 The Song Of Life';
+    yakuza6.displayName = 'Yakuza 6: SoL';
     yakuza6.image = './assets/image/yakuza-6.png';
-    yakuza6.executablePath = '\\sm1\\Shenmue.exe';
-    yakuza6.directoryHint = 'SMLaunch';
+    yakuza6.executablePath = '\\Yakuza6.exe';
+    yakuza6.directoryHint = 'Yakuza 6 - The Song of Life';
     await repo.save(yakuza6);
   }
 

@@ -54,11 +54,11 @@ export default class Sidebar extends Component<Props, State> {
   }
 
   openOurVkGroupLink() {
-    shell.openExternal('https://vk.com/shenmue3rus');
+    shell.openExternal('https://vk.com/ru_yakuza');
   }
 
   openDonateLink() {
-    shell.openExternal('https://vk.com/app6887721_-186925092');
+    shell.openExternal('https://vk.com/app6887721_-168985967');
   }
 
   openPatronsLink() {
