@@ -10,7 +10,7 @@ import GameCard, {
   DownloadProgressType,
   GameType
 } from './GameCard';
-// import Header from './Header';
+import Header from './Header';
 import Notificator from '../utils/Notificator';
 
 type Props = {
@@ -143,19 +143,8 @@ export default class Home extends Component<Props, State> {
       downloadTranslationUpdate,
       uninstallTranslation,
       items,
-      availableVersions: av
+      availableVersions
     } = this.props;
-    // console.log(availableVersions)
-
-    const availableVersions = {
-      ...av,
-      ...{Yakuza1: {
-          reportTranslationIssue: "https://vk.com/topic-186925092_46666645",
-          size: "5275234500",
-          url: "https://www.dropbox.com/sh/qiczgpjru9z1zn1/AABlTvbnKzT95l3Ov83ECxBZa?dl=1",
-          version: "20200801"
-        }}
-    }
 
     const {
       updateIsAvailable,
@@ -169,15 +158,13 @@ export default class Home extends Component<Props, State> {
       const game = items[i];
       const availableVersion = availableVersions[game.name] || null;
       games.push(
-        // <Col className="gutter-row" span={6} key={i}>
-          <GameCard
-            game={game}
-            availableVersion={availableVersion}
-            onGameChange={changeGameDirectory}
-            onUninstall={uninstallTranslation}
-            onDownloadUpdate={downloadTranslationUpdate}
-          />
-        // </Col>
+        <GameCard
+          game={game}
+          availableVersion={availableVersion}
+          onGameChange={changeGameDirectory}
+          onUninstall={uninstallTranslation}
+          onDownloadUpdate={downloadTranslationUpdate}
+        />
       );
     }
 
@@ -193,8 +180,7 @@ export default class Home extends Component<Props, State> {
         />
         <Content className={styles.content}>
           <Menu />
-          {/*<Header />*/}
-          {/*<Row gutter={24}>{games[0]}</Row>*/}
+          <Header />
 
           <Row gutter={16}>
             <Col className="gutter-row" span={6}>
@@ -219,7 +205,7 @@ export default class Home extends Component<Props, State> {
               {games[4]}
             </Col>
             <Col className="gutter-row" span={6}>
-
+              {games[5]}
             </Col>
             <Col className="gutter-row" span={6}>
 

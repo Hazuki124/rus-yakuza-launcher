@@ -113,6 +113,15 @@ export class Game1593245054458 implements MigrationInterface {
     yakuza5.executablePath = '\\sm1\\Shenmue.exe';
     yakuza5.directoryHint = 'SMLaunch';
     await repo.save(yakuza5);
+
+    const yakuza6 = new Game();
+    yakuza6.id = 6;
+    yakuza6.name = 'Yakuza6';
+    yakuza6.displayName = 'Yakuza 6 The Song Of Life';
+    yakuza6.image = './assets/image/yakuza-6.png';
+    yakuza6.executablePath = '\\sm1\\Shenmue.exe';
+    yakuza6.directoryHint = 'SMLaunch';
+    await repo.save(yakuza6);
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

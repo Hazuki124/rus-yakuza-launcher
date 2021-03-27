@@ -3,7 +3,6 @@ import axios from 'axios';
 import { remote, ipcRenderer } from 'electron';
 import { message } from 'antd';
 import ini from 'ini';
-import unzipper from 'unzipper';
 import fs from 'fs';
 import responseError from '../utils/responseError';
 import types from '../actions';
@@ -15,6 +14,8 @@ import {
 import GameUtil from '../utils/GameUtil';
 import FileDownloader from '../utils/FileDownloader';
 import Notificator from '../utils/Notificator';
+import FileExtractor from '../utils/FileExtractor';
+import ShellScriptUtil from '../utils/ShellScriptUtil';
 
 function* fetchIniFile(action: { payload: string }) {
   try {
@@ -107,22 +108,25 @@ function* installTranslation(action: {
     availableVersion: AvailableVersionType;
   };
 }) {
-  try {
-    const {
-      payload: { file, game, availableVersion }
-    } = action;
+  const {
+    payload: { file, game, availableVersion }
+  } = action;
 
+  try {
     yield put({
       type: types.INSTALL_UPDATE_REQUEST,
       payload: { game }
     });
 
     if (fs.existsSync(file)) {
-      fs.createReadStream(file).pipe(
-        unzipper.Extract({ path: `${game.directory}` })
-      );
-    } else {
-      throw new Error('Ошибка распаковки обновления');
+      yield call(FileExtractor.extract, file, game.directory);
+    }
+
+    if (availableVersion.shellScript) {
+      yield call(ShellScriptUtil.runBat, {
+        shell: availableVersion.shellScript,
+        cwd: game.directory
+      });
     }
 
     yield call(GameUtil.updateGame, {
@@ -143,17 +147,17 @@ function* installTranslation(action: {
       type: types.INSTALL_UPDATE_SUCCESS,
       payload: { game }
     });
-
-    if (fs.existsSync(file)) {
-      fs.unlinkSync(file);
-    }
   } catch (e) {
     yield put({
       type: types.INSTALL_UPDATE_FAILURE,
-      payload: responseError(e)
+      payload: { game }
     });
 
-    message.error('Ошибка распаковки обновления', 10);
+    message.error('Ошибка установки обновления', 10);
+  } finally {
+    if (fs.existsSync(file)) {
+      fs.unlinkSync(file);
+    }
   }
 }
 

@@ -132,7 +132,7 @@ export default function homePageReducer(
         availableVersions
       };
     case types.INSTALL_UPDATE_SUCCESS:
-    case types.INSTALL_UPDATE_FAILED:
+    case types.INSTALL_UPDATE_FAILURE:
       for (const [key, value] of Object.entries(state.availableVersions)) {
         if (key === action.payload.game.name) {
           availableVersions[key] = {

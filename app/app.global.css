@@ -6,8 +6,8 @@
 @import '~antd/dist/antd.css';
 
 @font-face {
-  font-family: 'UnderwoodChampion';
-  src: url('./assets/font/uwch.ttf');
+  font-family: 'EdoSZ';
+  src: url('./assets/font/edosz.ttf');
 }
 
 @keyframes fadein {

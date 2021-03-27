@@ -100,7 +100,7 @@ export default class Sidebar extends Component<Props, State> {
                 [styles.appear]: show
               })}
             >
-              Shenmue Launcher
+              Yakuza Launcher
             </h1>
           </Header>
           <Content className={styles.common}>

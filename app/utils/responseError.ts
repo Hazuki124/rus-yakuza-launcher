@@ -6,6 +6,5 @@ export default (error: any) => {
   const messages =
     get(error, 'networkError.result.errors') || get(error, 'description');
 
-  console.error(error);
   return { statusCode, messages };
 };
