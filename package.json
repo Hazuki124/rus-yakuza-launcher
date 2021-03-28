@@ -1,8 +1,8 @@
 {
-  "name": "shenmue-launcher",
-  "productName": "Shenmue Launcher",
+  "name": "yakuza-launcher",
+  "productName": "Yakuza Launcher",
   "version": "0.18.0",
-  "description": "Shenmue Launcher: обновляет переводы игр серии Shenmue",
+  "description": "Yakuza Launcher: обновляет переводы игр серии Yakuza",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
     "build-dll": "cross-env NODE_ENV=development webpack --config ./configs/webpack.config.renderer.dev.dll.babel.js --colors",
@@ -51,7 +51,7 @@
     ]
   },
   "build": {
-    "productName": "Shenmue Launcher",
+    "productName": "Yakuza Launcher",
     "appId": "org.develar.ElectronReact",
     "files": [
       "dist/",
