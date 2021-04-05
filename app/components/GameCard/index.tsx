@@ -60,7 +60,7 @@ type Props = {
   game: GameType;
   availableVersion: AvailableVersionType | null;
   onGameChange: (game: GameType) => {};
-  onUninstall: (game: GameType) => {};
+  onUninstall: (game: GameType, availableVersion: AvailableVersionType) => {};
   onDownloadUpdate: (
     availableVersion: AvailableVersionType | null,
     game: GameType
@@ -157,10 +157,15 @@ export default class GameCard extends Component<Props, State> {
   }
 
   uninstall() {
-    const { game, onUninstall } = this.props;
-    onUninstall({
-      ...game
-    });
+    const { game, availableVersion, onUninstall } = this.props;
+    onUninstall(
+      {
+        ...game
+      },
+      {
+        ...availableVersion
+      }
+    );
   }
 
   openExternalLink() {
@@ -184,7 +189,7 @@ export default class GameCard extends Component<Props, State> {
 
   render() {
     const { Content, Footer } = Layout;
-    const { game, availableVersion } = this.props;
+    const { game, availableVersion = {} } = this.props;
     const directoryIsSelected = !!game.directory;
     const directoryIsSet = !!game.directory;
     const currentVersionIsSet = !!game.currentVersion;
@@ -248,7 +253,11 @@ export default class GameCard extends Component<Props, State> {
           </Menu.Item>
         )}
         {directoryIsSet && currentVersionIsSet && (
-          <Menu.Item style={{ color: '#ff4d4f' }} key="uninstallTranslation" onClick={this.uninstall}>
+          <Menu.Item
+            style={{ color: '#ff4d4f' }}
+            key="uninstallTranslation"
+            onClick={this.uninstall}
+          >
             <DeleteOutlined /> Удалить перевод
           </Menu.Item>
         )}

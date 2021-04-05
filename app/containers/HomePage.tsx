@@ -22,10 +22,13 @@ function mapDispatchToProps(dispatch: Dispatch) {
     fetchGameList: () => dispatch({ type: types.RETRIEVE_GAME_LIST_REQUEST }),
     changeGameDirectory: (game: GameType) =>
       dispatch({ type: types.CHANGE_GAME_DIRECTORY_REQUEST, payload: game }),
-    uninstallTranslation: (game: GameType) =>
+    uninstallTranslation: (
+      game: GameType,
+      availableVersion: AvailableVersionType
+    ) =>
       dispatch({
         type: types.UNINSTALL_TRANSLATION_REQUEST,
-        payload: { game }
+        payload: { game, availableVersion }
       }),
     downloadTranslationUpdate: (
       availableVersion: AvailableVersionType,

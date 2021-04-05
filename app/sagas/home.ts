@@ -161,11 +161,22 @@ function* installTranslation(action: {
   }
 }
 
-function* uninstallTranslation(action: { payload: { game: GameType } }) {
+function* uninstallTranslation(action: {
+  payload: {
+    game: GameType;
+    availableVersion: AvailableVersionType;
+  };
+}) {
   const {
-    payload: { game }
+    payload: { game, availableVersion }
   } = action;
   try {
+    if (availableVersion && availableVersion.uninstallShellScript) {
+      yield call(ShellScriptUtil.runBat, {
+        shell: availableVersion.uninstallShellScript,
+        cwd: game.directory
+      });
+    }
     yield call(GameUtil.uninstallGame, game);
     yield call(GameUtil.updateGame, {
       ...game,
