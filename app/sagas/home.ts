@@ -122,9 +122,9 @@ function* installTranslation(action: {
       yield call(FileExtractor.extract, file, game.directory);
     }
 
-    if (availableVersion.shellScript) {
+    if (availableVersion.installShellScript) {
       yield call(ShellScriptUtil.runBat, {
-        shell: availableVersion.shellScript,
+        shell: availableVersion.installShellScript,
         cwd: game.directory
       });
     }

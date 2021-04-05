@@ -41,7 +41,8 @@ export type AvailableVersionType = {
   version: string | null;
   reportTranslationIssue?: string | null;
   checkFile?: string | null;
-  shellScript?: string | null;
+  installShellScript?: string | null;
+  uninstallShellScript?: string | null;
   isDownloading?: boolean;
   isUnpacking?: boolean;
   isInstalling?: boolean;
