@@ -74,7 +74,7 @@ export class Game1593245054458 implements MigrationInterface {
     yakuza1.name = 'Yakuza1';
     yakuza1.displayName = 'Yakuza Kiwami';
     yakuza1.image = './assets/image/yakuza-1.png';
-    yakuza1.executablePath = '\\media\\Yakuza0.exe';
+    yakuza1.executablePath = '\\media\\YakuzaKiwami.exe';
     yakuza1.directoryHint = 'Yakuza Kiwami';
     await repo.save(yakuza1);
 

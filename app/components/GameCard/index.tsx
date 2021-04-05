@@ -21,7 +21,7 @@ import {
   DeleteOutlined
 } from '@ant-design/icons';
 import styles from './styles.css';
-import Sound from '../../utils/Sound';
+// import Sound from '../../utils/Sound';
 import FileDownloader from '../../utils/FileDownloader';
 
 export type GameType = {
@@ -429,7 +429,7 @@ export default class GameCard extends Component<Props, State> {
                 [styles.btnDirNoAction]: true
               })}
             >
-              <SyncOutlined spin /> Удаление обновления
+              <SyncOutlined spin /> Удаление перевода
             </Button>
           )}
         </div>
