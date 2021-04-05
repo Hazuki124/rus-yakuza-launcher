@@ -121,7 +121,7 @@ export default class GameCard extends Component<Props, State> {
               directory
             });
           } else {
-            message.error('Выбрана неверная директория', 5);
+            message.error('Указана неверная директория', 5);
           }
         }
       });
@@ -136,10 +136,7 @@ export default class GameCard extends Component<Props, State> {
     ) {
       onDownloadUpdate(availableVersion, game);
     } else {
-      message.warning(
-        'Выбранная версия не поддерживается. Обновите игру до версии 1.07',
-        10
-      );
+      message.warning('Выбранная версия не поддерживается.', 10);
     }
   }
 
