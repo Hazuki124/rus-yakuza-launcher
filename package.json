@@ -106,7 +106,7 @@
     "publish": {
       "provider": "github",
       "owner": "Hazuki124",
-      "repo": "rus-shenmue-launcher",
+      "repo": "rus-yakuza-launcher",
       "private": false
     }
   },
