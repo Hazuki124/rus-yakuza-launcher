@@ -90,7 +90,7 @@ export class Game1593245054458 implements MigrationInterface {
     const yakuza3 = new Game();
     yakuza3.id = 3;
     yakuza3.name = 'Yakuza3';
-    yakuza3.displayName = 'Yakuza 3 Remastered';
+    yakuza3.displayName = 'Yakuza 3';
     yakuza3.image = './assets/image/yakuza-3.png';
     yakuza3.executablePath = '\\Yakuza3.exe';
     yakuza3.directoryHint = 'Yakuza 3';
@@ -99,7 +99,7 @@ export class Game1593245054458 implements MigrationInterface {
     const yakuza4 = new Game();
     yakuza4.id = 4;
     yakuza4.name = 'Yakuza4';
-    yakuza4.displayName = 'Yakuza 4 Remastered';
+    yakuza4.displayName = 'Yakuza 4';
     yakuza4.image = './assets/image/yakuza-4.png';
     yakuza4.executablePath = '\\Yakuza4.exe';
     yakuza4.directoryHint = 'Yakuza 4';
@@ -108,7 +108,7 @@ export class Game1593245054458 implements MigrationInterface {
     const yakuza5 = new Game();
     yakuza5.id = 5;
     yakuza5.name = 'Yakuza5';
-    yakuza5.displayName = 'Yakuza 5 Remastered';
+    yakuza5.displayName = 'Yakuza 5';
     yakuza5.image = './assets/image/yakuza-5.png';
     yakuza5.executablePath = '\\main\\Yakuza5.exe';
     yakuza5.directoryHint = 'Yakuza 5';
@@ -117,7 +117,7 @@ export class Game1593245054458 implements MigrationInterface {
     const yakuza6 = new Game();
     yakuza6.id = 6;
     yakuza6.name = 'Yakuza6';
-    yakuza6.displayName = 'Yakuza 6: SoL';
+    yakuza6.displayName = 'Yakuza 6';
     yakuza6.image = './assets/image/yakuza-6.png';
     yakuza6.executablePath = '\\Yakuza6.exe';
     yakuza6.directoryHint = 'Yakuza 6 - The Song of Life';

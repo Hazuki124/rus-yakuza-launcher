@@ -184,7 +184,7 @@ export default class GameCard extends Component<Props, State> {
 
   // eslint-disable-next-line class-methods-use-this
   playClick() {
-    Sound.playClick();
+    // Sound.playClick();
   }
 
   render() {

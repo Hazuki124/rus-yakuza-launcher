@@ -182,33 +182,30 @@ export default class Home extends Component<Props, State> {
           <Menu />
           <Header />
 
-          <Row gutter={16}>
-            <Col className="gutter-row" span={6}>
+          <Row gutter={32}>
+            <Col className="gutter-row" span={8}>
               {games[0]}
             </Col>
-            <Col className="gutter-row" span={6}>
+            <Col className="gutter-row" span={8}>
               {games[1]}
             </Col>
-            <Col className="gutter-row" span={6}>
+            <Col className="gutter-row" span={8}>
               {games[2]}
             </Col>
-            <Col className="gutter-row" span={6}>
-
-            </Col>
           </Row>
-          <Divider orientation="left" style={{ borderTop: '1px solid #1f1f1f' }} />
-          <Row gutter={16}>
-            <Col className="gutter-row" span={6}>
+          <Divider
+            orientation="left"
+            style={{ borderTop: '1px solid #1f1f1f' }}
+          />
+          <Row gutter={32}>
+            <Col className="gutter-row" span={8}>
               {games[3]}
             </Col>
-            <Col className="gutter-row" span={6}>
+            <Col className="gutter-row" span={8}>
               {games[4]}
             </Col>
-            <Col className="gutter-row" span={6}>
+            <Col className="gutter-row" span={8}>
               {games[5]}
-            </Col>
-            <Col className="gutter-row" span={6}>
-
             </Col>
           </Row>
         </Content>
