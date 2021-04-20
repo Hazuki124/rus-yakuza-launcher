@@ -65,6 +65,10 @@ export default class Sidebar extends Component<Props, State> {
     shell.openExternal('https://likeadragon.tilda.ws');
   }
 
+  openLink(url: string) {
+    shell.openExternal(url);
+  }
+
   openLauncherLink() {
     const { launcherUpdateInfo } = this.props;
     if (
@@ -131,6 +135,80 @@ export default class Sidebar extends Component<Props, State> {
                 <Button
                   ghost={!show}
                   type="link"
+                  onClick={() => this.openLink('https://t.me/ru_yakuza')}
+                  className={classNames({
+                    [styles.listLink]: true,
+                    [styles.noAnimation]: !show
+                  })}
+                >
+                  <i className="fab fa-telegram" aria-hidden="true" />
+                  <span style={{ marginLeft: '7px' }}>
+                    Наш Telegram-канал
+                  </span>
+                </Button>
+              </li>
+              <li>
+                <Button
+                  ghost={!show}
+                  type="link"
+                  onClick={() =>
+                    this.openLink('https://t.me/joinchat/VPd8YAKDpSxfA1fX')
+                  }
+                  className={classNames({
+                    [styles.listLink]: true,
+                    [styles.noAnimation]: !show
+                  })}
+                >
+                  <i className="fab fa-telegram" aria-hidden="true" />
+                  <span style={{ marginLeft: '7px' }}>
+                    Наш Telegram-чат
+                  </span>
+                </Button>
+              </li>
+              <li>
+                <Button
+                  ghost={!show}
+                  type="link"
+                  onClick={() =>
+                    this.openLink(
+                      'https://www.youtube.com/channel/UCLpnVo066Sv5dOKR4ilg2gQ'
+                    )
+                  }
+                  className={classNames({
+                    [styles.listLink]: true,
+                    [styles.noAnimation]: !show
+                  })}
+                >
+                  <i className="fab fa-youtube" aria-hidden="true" />
+                  <span style={{ marginLeft: '7px' }}>
+                    Наш YouTube-канал
+                  </span>
+                </Button>
+              </li>
+              <li>
+                <Button
+                  ghost={!show}
+                  type="link"
+                  onClick={() =>
+                    this.openLink(
+                      'https://forum.zoneofgames.ru/forum/125-like-a-dragon/'
+                    )
+                  }
+                  className={classNames({
+                    [styles.listLink]: true,
+                    [styles.noAnimation]: !show
+                  })}
+                >
+                  <i className="fa fa-link" aria-hidden="true" />
+                  <span style={{ marginLeft: '7px' }}>
+                    Наш раздел на ZOG
+                  </span>
+                </Button>
+              </li>
+              <li>
+                <Button
+                  ghost={!show}
+                  type="link"
                   onClick={this.openDonateLink}
                   className={classNames({
                     [styles.listLink]: true,
@@ -143,6 +221,7 @@ export default class Sidebar extends Component<Props, State> {
                   </span>
                 </Button>
               </li>
+              {/*
               <li>
                 <Button
                   ghost={!show}
@@ -156,6 +235,7 @@ export default class Sidebar extends Component<Props, State> {
                   <TeamOutlined /> Список донатеров проекта
                 </Button>
               </li>
+              */}
               {/*
               <li>
                 <Button

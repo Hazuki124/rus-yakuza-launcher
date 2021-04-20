@@ -17,7 +17,7 @@ import {
   ExclamationCircleOutlined,
   CloseSquareOutlined,
   WarningOutlined,
-  FileTextOutlined,
+  InfoCircleOutlined,
   DeleteOutlined
 } from '@ant-design/icons';
 import styles from './styles.css';
@@ -43,6 +43,7 @@ export type AvailableVersionType = {
   checkFile?: string | null;
   installShellScript?: string | null;
   uninstallShellScript?: string | null;
+  customInProgressText?: string | null;
   isDownloading?: boolean;
   isUnpacking?: boolean;
   isInstalling?: boolean;
@@ -292,6 +293,7 @@ export default class GameCard extends Component<Props, State> {
                 backgroundColor: '#333',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
+                backgroundPosition: 'center',
                 transition: 'all 0.7s ease'
               }}
               className={classNames({
@@ -396,7 +398,7 @@ export default class GameCard extends Component<Props, State> {
                 [styles.btnDirNoAction]: true
               })}
             >
-              <FileTextOutlined /> В процессе перевода...
+              <InfoCircleOutlined /> {availableVersion?.customInProgressText ? availableVersion.customInProgressText : 'В процессе перевода...'}
             </Button>
           )}
           {availableVersion && availableVersion.isDownloading && (
