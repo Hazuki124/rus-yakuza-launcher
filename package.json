@@ -1,7 +1,7 @@
 {
   "name": "yakuza-launcher",
   "productName": "Yakuza Launcher",
-  "version": "0.18.0",
+  "version": "1.0.0",
   "description": "Yakuza Launcher: обновляет переводы игр серии Yakuza",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
@@ -119,18 +119,7 @@
     "email": "hazuki124@gmail.com",
     "url": "https://vk.com/shenmue3rus"
   },
-  "contributors": [
-    {
-      "name": "Vikram Rangaraj",
-      "email": "vikr01@icloud.com",
-      "url": "https://github.com/vikr01"
-    },
-    {
-      "name": "Amila Welihinda",
-      "email": "amilajack@gmail.com",
-      "url": "https://github.com/amilajack"
-    }
-  ],
+  "contributors": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/electron-react-boilerplate/electron-react-boilerplate/issues"

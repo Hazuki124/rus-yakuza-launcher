@@ -1,13 +1,13 @@
 {
   "name": "rus-yakuza-launcher",
   "productName": "Yakuza Launcher",
-  "version": "0.19.0",
+  "version": "1.0.0",
   "description": "Yakuza Launcher: обновляет переводы игр серии Yakuza",
   "main": "./main.prod.js",
   "author": {
     "name": "Hazuki124",
     "email": "hazuki124@gmail.com",
-    "url": "https://github.com/Hazuki124/rus-shenmue-launcher"
+    "url": "https://github.com/Hazuki124/rus-yakuza-launcher"
   },
   "scripts": {
     "electron-rebuild": "node -r ../internals/scripts/BabelRegister.js ../internals/scripts/ElectronRebuild.js",

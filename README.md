@@ -3,7 +3,6 @@
 ```
 npm install --global windows-build-tools@4.0.0
 yarn
-
 ```
 
 ## Starting Development
