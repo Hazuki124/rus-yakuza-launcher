@@ -88,8 +88,11 @@
       "allowToChangeInstallationDirectory": true,
       "oneClick": false,
       "perMachine": true,
+      "createDesktopShortcut": true,
       "installerSidebar": "./resources/installerSidebar.bmp",
-      "uninstallerSidebar": "./resources/uninstallerSidebar.bmp"
+      "uninstallerSidebar": "./resources/uninstallerSidebar.bmp",
+      "deleteAppDataOnUninstall": true,
+      "runAfterFinish": true
     },
     "linux": {
       "target": [
