@@ -92,7 +92,7 @@ const createWindow = async () => {
     resizable: false,
     backgroundColor: '#161616',
     darkTheme: true,
-    icon: `${__dirname}/../resources/icons.icns`,
+    icon: `${__dirname}/../resources/icon.ico`,
     webPreferences:
       process.env.NODE_ENV === 'development' || process.env.E2E_BUILD === 'true'
         ? {
