@@ -92,7 +92,6 @@ const createWindow = async () => {
     resizable: false,
     backgroundColor: '#161616',
     darkTheme: true,
-    icon: `${__dirname}/../resources/icon.ico`,
     webPreferences:
       process.env.NODE_ENV === 'development' || process.env.E2E_BUILD === 'true'
         ? {
@@ -103,6 +102,7 @@ const createWindow = async () => {
           }
   });
 
+  mainWindow.setIcon(`${__dirname}/assets/image/icon.ico`);
   mainWindow.loadURL(`file://${__dirname}/app.html`);
 
   mainWindow.once('ready-to-show', () => {

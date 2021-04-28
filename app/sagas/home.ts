@@ -176,6 +176,13 @@ function* uninstallTranslation(action: {
         shell: availableVersion.uninstallShellScript,
         cwd: game.directory
       });
+      try {
+        fs.unlinkSync(
+          `${game.directory}\\${availableVersion.uninstallShellScript}`
+        );
+      } catch (e) {
+        // ignore error
+      }
     }
     yield call(GameUtil.uninstallGame, game);
     yield call(GameUtil.updateGame, {
