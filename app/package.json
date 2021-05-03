@@ -1,7 +1,7 @@
 {
   "name": "rus-yakuza-launcher",
   "productName": "Yakuza Launcher",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Yakuza Launcher: обновляет переводы игр серии Yakuza",
   "main": "./main.prod.js",
   "author": {
