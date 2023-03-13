@@ -29,7 +29,6 @@ yarn package-win
 
 See our [docs and guides here](https://electron-react-boilerplate.js.org/docs/installation)
 
-
 ## Throubleshooting
 
 In order to compile sqlite3 module remove these lines from node_modules typeorm
@@ -46,3 +45,14 @@ In order to compile sqlite3 module remove these lines from node_modules typeorm
 "./browser/repository/MongoRepository.js": "./browser/platform/BrowserDisabledDriversDummy.js",
 "./index.js": "./browser/index.js"
 },
+
+## Failed Build Tools Installation
+
+### Install choco
+
+[Install Chocolatey](https://community.chocolatey.org/courses/installation/installing?method=installing-chocolatey)
+
+```
+choco install python visualcpp-build-tools -y
+npm config set msvs_version 2017
+```

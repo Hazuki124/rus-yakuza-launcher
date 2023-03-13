@@ -53,6 +53,7 @@ function* retrieveGameList() {
       payload: responseError(e)
     });
 
+    console.error(e);
     message.error('Не удалось загрузить список игр', 10);
   }
 }

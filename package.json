@@ -302,8 +302,7 @@
     "redux-thunk": "^2.3.0",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.16",
-    "sqlite3": "^4.2.0",
-    "typeorm": "^0.2.25",
+    "typeorm": "0.2.25",
     "unzipper": "^0.10.11"
   },
   "devEngines": {

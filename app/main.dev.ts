@@ -27,7 +27,8 @@ export default class AppUpdater {
     });
     autoUpdater.on(
       'update-downloaded',
-      (_event, releaseNotes, _releaseName) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      (_event, _releaseNotes, _releaseName) => {
         mainWindow.webContents.send('update-downloaded');
       }
     );
@@ -42,7 +43,11 @@ export default class AppUpdater {
       autoUpdater.quitAndInstall(true, true);
     });
 
-    autoUpdater.checkForUpdates();
+    if (process.env.NODE_ENV === 'development') {
+      // Skip autoupdate check
+    } else {
+      autoUpdater.checkForUpdates();
+    }
   }
 }
 
@@ -108,9 +113,12 @@ const createWindow = async () => {
   mainWindow.once('ready-to-show', () => {
     setTimeout(() => {
       if (process.env.START_MINIMIZED) {
+        // @ts-ignore
         mainWindow.minimize();
       } else {
+        // @ts-ignore
         mainWindow.show();
+        // @ts-ignore
         mainWindow.focus();
       }
     }, 350);
@@ -122,13 +130,16 @@ const createWindow = async () => {
 
   ipcMain.on('download', (_event, info) => {
     console.log(info.url);
+    // eslint-disable-next-line no-param-reassign
     info.properties.onProgress = (status: any) =>
+      // @ts-ignore
       mainWindow.webContents.send(
         'download progress',
         status,
         info.game,
         info.availableVersion
       );
+    // @ts-ignore
     download(BrowserWindow.getFocusedWindow(), info.url, {
       ...info.properties,
       saveAs: false,
@@ -136,7 +147,9 @@ const createWindow = async () => {
       errorMessage: 'Файл {filename} не обнаружен',
       openFolderWhenDone: false
     })
+      // eslint-disable-next-line promise/always-return
       .then((dl: { getSavePath: () => any }) => {
+        // @ts-ignore
         mainWindow.webContents.send('download complete', {
           file: dl.getSavePath(),
           game: info.game,
@@ -144,6 +157,7 @@ const createWindow = async () => {
         });
       })
       .catch(() => {
+        // @ts-ignore
         mainWindow.webContents.send('download interrupted', {
           game: info.game,
           availableVersion: info.availableVersion

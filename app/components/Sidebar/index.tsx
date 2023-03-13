@@ -1,11 +1,11 @@
-import {ipcRenderer, remote, shell} from 'electron';
+import { ipcRenderer, remote, shell } from 'electron';
 import React, { Component } from 'react';
 import { Layout, Button, Badge, Tooltip } from 'antd';
+// @ts-ignore
 import classNames from 'classnames';
-import { TeamOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { ExclamationCircleOutlined, LoadingOutlined } from '@ant-design/icons';
 import styles from './styles.css';
 import FileDownloader from '../../utils/FileDownloader';
-import { LoadingOutlined } from '@ant-design/icons';
 
 type Props = {
   updateIsAvailable: boolean;
@@ -22,7 +22,7 @@ type State = {
 };
 
 export default class Sidebar extends Component<Props, State> {
-  private timeoutId;
+  private timeoutId: NodeJS.Timeout | undefined;
 
   constructor(props: Readonly<Props>) {
     // Required step: always call the parent class' constructor
@@ -54,7 +54,7 @@ export default class Sidebar extends Component<Props, State> {
   }
 
   openOurVkGroupLink() {
-    shell.openExternal('https://vk.com/ru_yakuza');
+    shell.openExternal('https://vk.com/like_a_dragon_kiwami');
   }
 
   openDonateLink() {
@@ -65,14 +65,15 @@ export default class Sidebar extends Component<Props, State> {
     shell.openExternal('https://likeadragon.tilda.ws');
   }
 
-  openLink(url: string) {
-    shell.openExternal(url);
+  openLink(url: string): Promise<void> {
+    return shell.openExternal(url);
   }
 
   openLauncherLink() {
     const { launcherUpdateInfo } = this.props;
     if (
       launcherUpdateInfo &&
+      launcherUpdateInfo.url != null &&
       FileDownloader.isValidURL(launcherUpdateInfo.url)
     ) {
       shell.openExternal(launcherUpdateInfo.url);
@@ -86,7 +87,11 @@ export default class Sidebar extends Component<Props, State> {
   render() {
     const { Header, Footer, Sider, Content } = Layout;
     const { show } = this.state;
-    const { updateIsAvailable, updateDownloadInProgress, updateIsDownloaded } = this.props;
+    const {
+      updateIsAvailable,
+      updateDownloadInProgress,
+      updateIsDownloaded
+    } = this.props;
     const appVersion = remote.app.getVersion();
 
     const isNewVersionAvailable = updateIsAvailable ? 1 : 0;
@@ -135,24 +140,8 @@ export default class Sidebar extends Component<Props, State> {
                 <Button
                   ghost={!show}
                   type="link"
-                  onClick={() => this.openLink('https://t.me/ru_yakuza')}
-                  className={classNames({
-                    [styles.listLink]: true,
-                    [styles.noAnimation]: !show
-                  })}
-                >
-                  <i className="fab fa-telegram" aria-hidden="true" />
-                  <span style={{ marginLeft: '7px' }}>
-                    Наш Telegram-канал
-                  </span>
-                </Button>
-              </li>
-              <li>
-                <Button
-                  ghost={!show}
-                  type="link"
                   onClick={() =>
-                    this.openLink('https://t.me/joinchat/VPd8YAKDpSxfA1fX')
+                    this.openLink('https://t.me/like_a_dragon_kiwami')
                   }
                   className={classNames({
                     [styles.listLink]: true,
@@ -160,11 +149,10 @@ export default class Sidebar extends Component<Props, State> {
                   })}
                 >
                   <i className="fab fa-telegram" aria-hidden="true" />
-                  <span style={{ marginLeft: '7px' }}>
-                    Наш Telegram-чат
-                  </span>
+                  <span style={{ marginLeft: '7px' }}>Наш Telegram-канал</span>
                 </Button>
               </li>
+              {/*
               <li>
                 <Button
                   ghost={!show}
@@ -185,6 +173,7 @@ export default class Sidebar extends Component<Props, State> {
                   </span>
                 </Button>
               </li>
+              */}
               <li>
                 <Button
                   ghost={!show}
@@ -200,11 +189,10 @@ export default class Sidebar extends Component<Props, State> {
                   })}
                 >
                   <i className="fa fa-link" aria-hidden="true" />
-                  <span style={{ marginLeft: '7px' }}>
-                    Наш раздел на ZOG
-                  </span>
+                  <span style={{ marginLeft: '7px' }}>Наш раздел на ZOG</span>
                 </Button>
               </li>
+              {/*
               <li>
                 <Button
                   ghost={!show}
@@ -221,6 +209,7 @@ export default class Sidebar extends Component<Props, State> {
                   </span>
                 </Button>
               </li>
+              */}
               {/*
               <li>
                 <Button
@@ -261,20 +250,19 @@ export default class Sidebar extends Component<Props, State> {
               [styles.canSelect]: true
             })}
           >
-            {updateIsAvailable &&
+            {updateIsAvailable && (
               <Tooltip placement="top" title="Доступно обновление">
-                <Badge count={isNewVersionAvailable} color={isNewVersionAvailable ? 'cyan' : ''}>
-                  <div>
-                    Версия: {appVersion}
-                  </div>
+                <Badge
+                  count={isNewVersionAvailable}
+                  color={isNewVersionAvailable ? 'cyan' : ''}
+                >
+                  <div>Версия: {appVersion}</div>
                 </Badge>
               </Tooltip>
-            }
-            {!isNewVersionAvailable && (
-              <div>
-                Версия: {appVersion}
-              </div>
             )}
+
+            {!isNewVersionAvailable && <div>Версия: {appVersion}</div>}
+
             {!updateIsDownloaded && updateDownloadInProgress && (
               <div>
                 <Button type="link" className={styles.loadingBtn}>
